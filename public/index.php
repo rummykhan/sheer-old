@@ -2,7 +2,11 @@
 
 require '../vendor/autoload.php';
 
-$container = new \App\Container();
+$application = new \App\Core\Application();
 
-$container->doSomething();
+echo '<pre>';
+if ($application->urlMatched()) {
+    return $application->sendResponse();
+}
 
+throw new Exception('Route not found exception!');
