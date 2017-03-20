@@ -26,7 +26,7 @@ class Application
     {
         list($controller, $action) = $this->router->getTarget();
 
-        $controller = $this->container->make($controller);
+        $controller = $this->container->create($controller);
 
         return $this->container->call($controller, $action);
     }

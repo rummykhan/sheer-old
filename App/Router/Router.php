@@ -60,7 +60,7 @@ class Router
 
         list($controller, $action) = explode('@', $controller);
 
-        return class_exists($controller) && method_exists(new $controller(), $action);
+        return class_exists($controller); //&& method_exists(new $controller(), $action)
     }
 
     public function getTarget()
