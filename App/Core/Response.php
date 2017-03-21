@@ -19,7 +19,7 @@ class Response
 
     protected function viewToPath($view)
     {
-        return str_replace('.', '-', $view);
+        return str_replace('.', '/', $view);
     }
 
     public function render()

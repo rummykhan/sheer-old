@@ -6,10 +6,14 @@ use Exception;
 
 class Handler
 {
+    protected $trace = [];
+    protected $exception = null;
+
     public function handle($exception)
     {
-        echo '<pre>';
-        print_r($exception->getMessage());
-        print_r(debug_backtrace());
+        $this->trace = array_reverse($exception->getTrace());
+        $this->exception = $exception;
+
+        include("../App/Exceptions/error.php");
     }
 }
