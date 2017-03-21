@@ -14,7 +14,7 @@ I created this framework just to understand dependency management, This is not f
  - Add Your Views in `views/` directory 
 
 ### How To
-`git clone https://github.com/rummykhan/php-container.git`
+`git clone https://github.com/rummykhan/php-min.git`
 
 `composer dump-autoload`
 
