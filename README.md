@@ -2,7 +2,6 @@
 
 A simple PHP Minimalistic Framework to understand PHP Reflection and dependency management.
 
-
 ### Pre Requisites
  - PHP >= 5.6
  - mod_rewrite Enabled
@@ -26,3 +25,6 @@ I made this Container just to understand dependency management, This is not for 
 
 ### Contact
 rummykhan(<a href="mailto:rehan_manzoor@outlook.com">rehan_manzoor@outlook.com</a>)
+
+### License
+The PHP-min framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
