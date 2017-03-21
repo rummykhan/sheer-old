@@ -4,7 +4,7 @@ A simple PHP Minimalistic Framework to understand PHP Reflection and dependency 
 
 
 ### Pre Requisites
- - PHP >= 7.0 (Return types used)
+ - PHP >= 5.6
  - mod_rewrite Enabled
  
 ### Development
