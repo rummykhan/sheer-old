@@ -1,6 +1,9 @@
 # PHP Min
 A simple PHP Minimalist Framework to understand PHP Reflection and dependency management.
 
+### ** NOTE **
+I created this framework just to understand dependency management, This is not for production environment.
+
 ### Pre Requisites
  - PHP >= 5.6
  - mod_rewrite Enabled
@@ -18,9 +21,6 @@ A simple PHP Minimalist Framework to understand PHP Reflection and dependency ma
 `PHP -S localhost:1234 -t public`
 
 `Browser: http://localhost:1234`
-
-### Disclaimer
-I created this framework just to understand dependency management, This is not for production environment.
 
 ### Contact
 rummykhan(<a href="mailto:rehan_manzoor@outlook.com">rehan_manzoor@outlook.com</a>)
