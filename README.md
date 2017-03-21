@@ -25,4 +25,4 @@ A simple PHP Minimalistic Framework to understand PHP Reflection and dependency 
 I made this Container just to understand dependency management, This is not for production environment.
 
 ### Contact
-Email <a href="mailto:rehan_manzoor@outlook.com">rehan_manzoor@outlook.com</a>
+rummykhan(<a href="mailto:rehan_manzoor@outlook.com">rehan_manzoor@outlook.com</a>)
