@@ -4,15 +4,13 @@ namespace App\Core;
 
 use App\Router\Router;
 
-class Application
+class Application extends Container
 {
-    protected $container = null;
     protected $request = null;
     protected $router = null;
 
     public function __construct()
     {
-        $this->container = new Container();
         $this->request = new Request();
         $this->router = new Router($this->request);
     }
@@ -26,8 +24,11 @@ class Application
     {
         list($controller, $action) = $this->router->getTarget();
 
-        $controller = $this->container->create($controller);
+        $controller = $this->build($controller);
 
-        return $this->container->call($controller, $action);
+        $content =  $controller->$action();
+
+        print_r($content);
+
     }
 }

@@ -6,43 +6,32 @@ use ReflectionClass;
 
 class Container
 {
-    protected $stack = [];
+    protected function getDependencies(array $parameters)
+    {
+        $dependencies = [];
 
-    protected function build($class)
+        foreach ($parameters as $parameter) {
+
+            $class = $parameter->getClass()->name;
+
+            $dependencies[] = $this->build($parameter->getClass()->name);
+        }
+
+        return $dependencies;
+    }
+
+    public function build($class)
     {
         $reflector = new ReflectionClass($class);
+
         $constructor = $reflector->getConstructor();
 
         if (is_null($constructor)) {
             return new $class();
         }
 
-        $this->stack[] = $class;
+        $dependencies = $this->getDependencies($constructor->getParameters());
 
-        $dependencies = $constructor->getParameters();
-
-
-        foreach ($parameters as $parameter) {
-
-            echo $parameter->getName();
-            echo '<br>';
-            echo $parameter->getClass()->getNamespaceName();
-            echo '<br>';
-            echo $parameter->getClass();
-            echo '<br>';
-        }
-
-
-        exit('');
-    }
-
-    public function create($class)
-    {
-        return $this->build($class);
-    }
-
-    public function call($obj, $method)
-    {
-
+        return $reflector->newInstanceArgs($dependencies);
     }
 }

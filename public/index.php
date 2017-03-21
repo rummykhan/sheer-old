@@ -3,8 +3,10 @@
 require '../vendor/autoload.php';
 
 $application = new \App\Core\Application();
+$handler = new \App\Exceptions\Handler();
 
-echo '<pre>';
+set_exception_handler([$handler, 'handle']);
+
 if ($application->urlMatched()) {
     return $application->sendResponse();
 }
