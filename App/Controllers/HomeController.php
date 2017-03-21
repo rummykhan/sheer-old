@@ -8,6 +8,7 @@ use App\Repositories\PersonRepository;
 class HomeController
 {
     protected $repository = null;
+
     public function __construct(PersonRepository $repository)
     {
         $this->repository = $repository;
@@ -17,6 +18,11 @@ class HomeController
     {
         $data = $this->repository->all();
 
-        return new Response('home.index', compact('data'));
+        return new Response('home.index', $data);
+    }
+
+    public function test()
+    {
+        return new Response('home.test');
     }
 }
