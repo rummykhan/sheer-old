@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-use App\Router\Router;
-
 class Application extends Container
 {
     protected $request = null;

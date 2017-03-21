@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Exception</title>
+    <title>Exception <?= $this->exception->getCode() ?></title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
