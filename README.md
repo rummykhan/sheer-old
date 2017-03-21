@@ -20,7 +20,7 @@ A simple PHP Minimalist Framework to understand PHP Reflection and dependency ma
 `Browser: http://localhost:1234`
 
 ### Disclaimer
-I made this Container just to understand dependency management, This is not for production environment.
+I created this framework just to understand dependency management, This is not for production environment.
 
 ### Contact
 rummykhan(<a href="mailto:rehan_manzoor@outlook.com">rehan_manzoor@outlook.com</a>)
