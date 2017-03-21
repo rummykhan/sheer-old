@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Response;
 use App\Repositories\PersonRepository;
 
 class HomeController
@@ -14,6 +15,8 @@ class HomeController
 
     public function index()
     {
-        return $this->repository->all();
+        $data = $this->repository->all();
+
+        return new Response('home.index', compact('data'));
     }
 }

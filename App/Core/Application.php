@@ -28,7 +28,6 @@ class Application extends Container
 
         $content =  $controller->$action();
 
-        print_r($content);
-
+        return $content->render();
     }
 }
