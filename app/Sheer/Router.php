@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace App\Sheer;
 
 /**
  * Class Router
@@ -120,5 +120,10 @@ class Router
     public function getTarget()
     {
         return explode('@', $this->route[$this->request->getRequestMethod()]);
+    }
+
+    public function get($path, $target)
+    {
+
     }
 }

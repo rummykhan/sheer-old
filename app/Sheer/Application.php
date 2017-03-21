@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core;
+namespace App\Sheer;
 
 /**
  * Class Application
@@ -8,15 +8,6 @@ namespace App\Core;
  */
 class Application extends Container
 {
-    /**
-     * @var Request|null
-     */
-    protected $request = null;
-    /**
-     * @var Router|null
-     */
-    protected $router = null;
-
     /**
      * @array $instances
      */
@@ -29,12 +20,6 @@ class Application extends Container
     {
         // Bootstrap the application services.
         $this->bootstrap();
-
-        // At application start initialize the new request
-        $this->request = $this->get('request');
-
-        // At application start initialize the Router
-        $this->router = $this->get('router');
     }
 
     /**
@@ -44,7 +29,7 @@ class Application extends Container
      */
     public function urlMatched()
     {
-        return $this->router->match($this->request);
+        return $this->get('router')->match($this->get('request'));
     }
 
     /**
@@ -55,7 +40,7 @@ class Application extends Container
     public function sendResponse()
     {
         // Get controller and action from the dictionary related to current url
-        list($controller, $action) = $this->router->getTarget();
+        list($controller, $action) = $this->get('router')->getTarget();
 
         // Get controller object.
         $controller = $this->build($controller);
@@ -73,13 +58,21 @@ class Application extends Container
     private function bootstrap()
     {
         $aliases = [
-            'request' => 'App\Core\Request',
-            'router' => 'App\Core\Router'
+            'app' => $this,
+            'request' => 'App\Sheer\Request',
+            'router' => 'App\Sheer\Router'
         ];
 
         foreach ($aliases as $alias => $class) {
-            // Add an instance to the instances array
-            $this->addInstance($alias, $this->build($class));
+
+            if( !is_object($class) ){
+                // Add an instance to the instances array
+                $this->addInstance($alias, $this->build($class));
+                continue;
+            }
+
+            // Donot build the object if it is already object..
+            $this->addInstance($alias, $class);
         }
     }
 

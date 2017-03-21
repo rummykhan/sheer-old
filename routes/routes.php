@@ -1,9 +1,7 @@
 <?php
 
 
-return [
-    '/' =>
-        ['GET' => 'App\Controllers\HomeController@index'],
-    '/test' =>
-        ['GET' => 'App\Controllers\HomeController@test']
-];
+use App\Core\Router;
+
+Router::get('/', 'HomeController@index');
+Router::get('/test', 'HomeController@test');

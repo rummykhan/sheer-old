@@ -2,7 +2,7 @@
 
 require '../vendor/autoload.php';
 
-$application = new \App\Core\Application();
+$application = new \App\Sheer\Application();
 $handler = new \App\Exceptions\Handler();
 
 set_exception_handler([$handler, 'handle']);
