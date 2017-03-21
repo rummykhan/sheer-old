@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Core\Response;
+use App\Sheer\Response;
 use App\Repositories\PersonRepository;
 
 class HomeController

@@ -2,6 +2,9 @@
 
 namespace App\Sheer;
 
+use App\Sheer\Support\Collection;
+use Exception;
+
 /**
  * Class Router
  * @package App\Core
@@ -11,7 +14,7 @@ class Router
     /**
      * @var null
      */
-    protected $routes = null;
+    protected $routes = [];
     /**
      * @var Request|null
      */
@@ -30,7 +33,8 @@ class Router
         // Update the current request.
         $this->request = $request;
 
-        // Update routes from the file.
+        $this->routes = new Collection($this->routes);
+
         $this->updateRoutes();
     }
 
@@ -39,7 +43,7 @@ class Router
      */
     public function updateRoutes()
     {
-        $this->routes = require '../routes/routes.php';
+        require '../routes/routes.php';
     }
 
     /**
@@ -61,20 +65,35 @@ class Router
     protected function matchRoute()
     {
         return $this->routeExists() &&
-            $this->methodMatched() &&
             $this->requestTargetExists();
     }
 
-    /** Check if the route path exists or not.
+    /**
+     * Check if the route path exists or not.
+     *
      * @return bool
+     *
+     * @throws Exception
      */
     private function routeExists()
     {
-        if (!isset($this->routes[$this->request->getPath()])) {
+        $matched = $this->routes
+            ->where('path', $this->request->getPath())
+            ->where('method', $this->request->getRequestMethod())
+            ->first();
+
+        if (!$matched) {
+
+            $matched = $this->routes->where('path', $this->request->getPath())->first();
+
+            if( $matched ){
+                throw new Exception('Method not allowed.');
+            }
+
             return false;
         }
 
-        $this->updateCurrentRoute($this->routes[$this->request->getPath()]);
+        $this->updateCurrentRoute($matched);
 
         return true;
     }
@@ -96,7 +115,7 @@ class Router
      */
     private function methodMatched()
     {
-        return isset($this->route[$this->request->getRequestMethod()]);
+        return $this->route['method'] === $this->request->getRequestMethod();
     }
 
     /**
@@ -106,7 +125,9 @@ class Router
      */
     private function requestTargetExists()
     {
-        $controller = $this->route[$this->request->getRequestMethod()];
+        $controller = $this->route['target'];
+
+        $controller = $this->normalizeController($controller);
 
         list($controller, $action) = explode('@', $controller);
 
@@ -119,11 +140,63 @@ class Router
      */
     public function getTarget()
     {
-        return explode('@', $this->route[$this->request->getRequestMethod()]);
+        list($controller, $action) = explode('@', $this->route['target']);
+        return [
+            $this->normalizeController($controller), $action
+        ];
     }
 
+    /**
+     * Add a GET path to router collection
+     *
+     * @param $path
+     * @param $target
+     */
     public function get($path, $target)
     {
+        $this->routes->add(['method' => 'GET', 'path' => $path, 'target' => $target]);
+    }
 
+    /**
+     * Add a POST path to router collection
+     *
+     * @param $path
+     * @param $target
+     */
+    public function post($path, $target)
+    {
+        $this->routes->add(['method' => 'POST', 'path' => $path, 'target' => $target]);
+    }
+
+    /**
+     * Add a PUT path to the router collection
+     *
+     * @param $path
+     * @param $target
+     */
+    public function put($path, $target)
+    {
+        $this->routes->add(['method' => 'PUT', 'path' => $path, 'target' => $target]);
+    }
+
+    /**
+     * Add a DELETE path to the router collection
+     * @param $path
+     * @param $target
+     */
+    public function delete($path, $target)
+    {
+        $this->routes->add(['method' => 'DELETE', 'path' => $path, 'target' => $target]);
+    }
+
+    /**
+     * Normalize the controller
+     * by adding the base path of the controller
+     * @param $controller
+     * @return string
+     */
+    protected function normalizeController($controller)
+    {
+        return "App\\Controllers\\{$controller}";
     }
 }

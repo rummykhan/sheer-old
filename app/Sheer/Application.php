@@ -46,10 +46,10 @@ class Application extends Container
         $controller = $this->build($controller);
 
         // get Response from controller action
-        $content = $controller->$action();
+        $response = $controller->$action();
 
         // render the Response
-        return $content->render();
+        return $response->render();
     }
 
     /**

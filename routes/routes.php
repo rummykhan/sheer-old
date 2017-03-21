@@ -1,7 +1,5 @@
 <?php
 
 
-use App\Core\Router;
-
-Router::get('/', 'HomeController@index');
-Router::get('/test', 'HomeController@test');
+$this->get('/', 'HomeController@index');
+$this->get('/test', 'HomeController@test');
