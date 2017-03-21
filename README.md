@@ -1,6 +1,5 @@
 # PHP Min
-
-A simple PHP Minimalistic Framework to understand PHP Reflection and dependency management.
+A simple PHP Minimalist Framework to understand PHP Reflection and dependency management.
 
 ### Pre Requisites
  - PHP >= 5.6
