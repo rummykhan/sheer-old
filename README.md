@@ -1,6 +1,6 @@
-# PHP Container
+# PHP Min
 
-A simple PHP Container to understand PHP Reflection and dependency management.
+A simple PHP Minimalistic Framework to understand PHP Reflection and dependency management.
 
 
 ### Pre Requisites
