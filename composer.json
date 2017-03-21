@@ -1,7 +1,7 @@
 {
-  "name": "rummykhan/php-min",
-  "description": "PHP min framework.",
-  "keywords": ["framework", "php-min"],
+  "name": "rummykhan/sheer",
+  "description": "PHP Sheer framework.",
+  "keywords": ["framework", "sheer"],
   "license": "MIT",
   "homepage": "https://www.rehanmanzoor.me",
   "authors": [
