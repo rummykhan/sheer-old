@@ -1,4 +1,4 @@
-# PHP Min
+# Sheer
 A simple PHP Minimalist Framework to understand PHP Reflection and dependency management.
 
 ### ** NOTE **
@@ -14,7 +14,7 @@ I created this framework just to understand dependency management, This is not f
  - Add Your Views in `views/` directory 
 
 ### How To
-`git clone https://github.com/rummykhan/php-min.git`
+`git clone https://github.com/rummykhan/sheer.git`
 
 `composer dump-autoload`
 
@@ -26,4 +26,4 @@ I created this framework just to understand dependency management, This is not f
 rummykhan(<a href="mailto:rehan_manzoor@outlook.com">rehan_manzoor@outlook.com</a>)
 
 ### License
-The PHP-min framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Sheer framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
