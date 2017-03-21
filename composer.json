@@ -1,4 +1,15 @@
 {
+  "name": "rummykhan/php-min",
+  "description": "PHP min framework.",
+  "keywords": ["framework", "php-min"],
+  "license": "MIT",
+  "homepage": "https://www.rehanmanzoor.me",
+  "authors": [
+    {
+      "name": "Rehan Manzoor",
+      "email": "rehan_manzoor@outlook.com"
+    }
+  ],
   "autoload":{
     "psr-4":{
       "App\\": "app/"
