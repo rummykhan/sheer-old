@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Sheer;
+namespace App\Sheer\Router;
 
+use App\Sheer\Request;
 use App\Sheer\Support\Collection;
 use Exception;
 
