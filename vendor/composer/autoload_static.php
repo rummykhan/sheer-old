@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit137941492dd556250436e950964687b6
 {
+    public static $files = array (
+        '79b9a5df99b0ddd7febd64626f71dbbd' => __DIR__ . '/../..' . '/app/Sheer/helpers/helpers.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'A' => 
         array (

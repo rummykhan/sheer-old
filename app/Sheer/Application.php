@@ -14,10 +14,17 @@ class Application extends Container
     protected $instances = [];
 
     /**
+     * @array $basePath
+     */
+    protected $basePath = null;
+
+    /**
      * Application constructor.
      */
-    public function __construct()
+    public function __construct($basePath)
     {
+        $this->basePath = $basePath;
+
         // Bootstrap the application services.
         $this->bootstrap();
     }
@@ -109,5 +116,10 @@ class Application extends Container
 
         // return object
         return $instance;
+    }
+
+    public static function getInstance()
+    {
+
     }
 }

@@ -11,6 +11,9 @@
     }
   ],
   "autoload":{
+    "files": [
+      "app/Sheer/helpers/helpers.php"
+    ],
     "psr-4":{
       "App\\": "app/"
     }
